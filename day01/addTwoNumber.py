@@ -25,11 +25,11 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        prenode = ListNode(0)
-        lastnode = prenode
-        val = 0
-        while val or l1 or l2:
-            val, cur = divmod(val + (l1.val if l1 else 0) + (l2.val if l2 else 0), 10)
+        prenode = ListNode(0)   # 存储头节点
+        lastnode = prenode      # 不断扩展，存储每次循环中的下一节点
+        sum = 0
+        while sum or l1 or l2:
+            sum, cur = divmod(sum + (l1.val if l1 else 0) + (l2.val if l2 else 0), 10)
             lastnode.next = ListNode(cur)
             lastnode = lastnode.next
             l1 = l1.next if l1 else None
